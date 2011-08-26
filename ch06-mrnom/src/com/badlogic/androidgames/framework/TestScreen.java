@@ -13,7 +13,7 @@ import com.badlogic.androidgames.framework.Graphics.PixmapFormat;
 import com.badlogic.androidgames.framework.Input.KeyEvent;
 import com.badlogic.androidgames.framework.Input.TouchEvent;
 
-class TestScreen extends Screen {
+public class TestScreen extends Screen {
     long startTime = System.nanoTime();
     int frames;
     Pixmap bob;

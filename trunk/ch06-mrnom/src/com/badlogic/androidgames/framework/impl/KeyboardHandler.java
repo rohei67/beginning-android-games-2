@@ -40,12 +40,12 @@ public class KeyboardHandler implements OnKeyListener {
             keyEvent.keyChar = (char) event.getUnicodeChar();
             if (event.getAction() == android.view.KeyEvent.ACTION_DOWN) {
                 keyEvent.type = KeyEvent.KEY_DOWN;
-                if(keyCode > 0 && keyCode < 127)
+                if(keyCode >= 0 && keyCode < 128)
                     pressedKeys[keyCode] = true;
             }
             if (event.getAction() == android.view.KeyEvent.ACTION_UP) {
                 keyEvent.type = KeyEvent.KEY_UP;
-                if(keyCode > 0 && keyCode < 127)
+                if(keyCode >= 0 && keyCode < 128)
                     pressedKeys[keyCode] = false;
             }
             keyEventsBuffer.add(keyEvent);

@@ -28,7 +28,7 @@ public class GLSurfaceViewTest extends Activity {
 
 	@Override
 	public void onResume() {
-		super.onPause();
+		super.onResume();
 		glView.onResume();
 	}
 

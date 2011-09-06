@@ -21,12 +21,12 @@ public class Texture {
     int minFilter;
     int magFilter;   
     public int width;
-    public int height;    
+    public int height;
     
     public Texture(GLGame glGame, String fileName) {
         this.glGraphics = glGame.getGLGraphics();
         this.fileIO = glGame.getFileIO();
-        this.fileName = fileName;        
+        this.fileName = fileName;
         load();
     }
     
@@ -39,7 +39,7 @@ public class Texture {
         InputStream in = null;
         try {
             in = fileIO.readAsset(fileName);
-            Bitmap bitmap = BitmapFactory.decodeStream(in);           
+            Bitmap bitmap = BitmapFactory.decodeStream(in);
             gl.glBindTexture(GL10.GL_TEXTURE_2D, textureId);
             GLUtils.texImage2D(GL10.GL_TEXTURE_2D, 0, bitmap, 0);
             setFilters(GL10.GL_NEAREST, GL10.GL_NEAREST);            
@@ -54,7 +54,7 @@ public class Texture {
                 try { in.close(); } catch (IOException e) { }
         }
     }
-           
+    
     public void reload() {
         load();
         bind();
@@ -77,7 +77,7 @@ public class Texture {
     
     public void dispose() {
         GL10 gl = glGraphics.getGL();
-        gl.glBindTexture(GL10.GL_TEXTURE_2D, textureId);
+        gl.glBindTexture(GL10.GL_TEXTURE_2D, 0);
         int[] textureIds = { textureId };
         gl.glDeleteTextures(1, textureIds, 0);
     }

@@ -77,7 +77,7 @@ public class Texture {
     
     public void dispose() {
         GL10 gl = glGraphics.getGL();
-        gl.glBindTexture(GL10.GL_TEXTURE_2D, textureId);
+        gl.glBindTexture(GL10.GL_TEXTURE_2D, 0);
         int[] textureIds = { textureId };
         gl.glDeleteTextures(1, textureIds, 0);
     }

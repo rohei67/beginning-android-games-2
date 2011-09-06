@@ -86,8 +86,12 @@ public class Texture {
 			newHeight = newHeight / 2;
 			if (newWidth <= 0)
 				break;
-
-			Bitmap newBitmap = Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, true);
+			Bitmap newBitmap = Bitmap.createBitmap(newWidth, newHeight,
+					bitmap.getConfig());
+			Canvas canvas = new Canvas(newBitmap);
+			canvas.drawBitmap(bitmap,
+					new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight()),
+					new Rect(0, 0, newWidth, newHeight), null);
 			bitmap.recycle();
 			bitmap = newBitmap;
 			level++;
@@ -121,7 +125,7 @@ public class Texture {
 
 	public void dispose() {
 		GL10 gl = glGraphics.getGL();
-		gl.glBindTexture(GL10.GL_TEXTURE_2D, textureId);
+		gl.glBindTexture(GL10.GL_TEXTURE_2D, 0);
 		int[] textureIds = { textureId };
 		gl.glDeleteTextures(1, textureIds, 0);
 	}
